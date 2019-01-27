@@ -1,0 +1,10 @@
+name: SetHomePlugin
+version: 1.0
+main: ru.zendal.SetHome
+commands:
+  sethome:
+    usage: /sethome
+    description: Чтобы установить точку дома.
+  home:
+    usage: /home
+    description: Для телепортации домой.

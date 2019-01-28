@@ -6,8 +6,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SetHomeCommand implements CommandExecutor {
-    static Location coord;
+    static Map<String, Location> indivCoord = new HashMap<>();
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -15,7 +18,8 @@ public class SetHomeCommand implements CommandExecutor {
             return true;
         }
         Player player = (Player) sender;
-        coord = player.getLocation();
+        indivCoord.put(player.getDisplayName(),player.getLocation());
+        Location coord = indivCoord.get(player.getDisplayName());
         player.sendMessage("Ваши координаты дома сохранены: " + coord.getBlockX() + " " + coord.getBlockY() + " " + coord.getBlockZ());
 
         return true;
